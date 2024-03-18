@@ -32,9 +32,8 @@ function add() {
         // Create a new list item
         var newItem = document.createElement('li');
         newItem.innerHTML = `
-            <span class="text-lg"></span>
-            <span>${textInputValue}</span>
-            <span class="ml-auto bg-${dropdownValue}-300 rounded-full px-2 py-1">${dropdownValue}</span>
+        <span class="text-center ml-3 pt-4">➡️${dropdownValue}</span> <span
+        class="bg-pink-200 text-white rounded-full px-4 py-1 ml-4">${dropdownValue}<span>
         `;
         // Add the new list item to the existing list
         var list = document.getElementById('listItems');

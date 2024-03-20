@@ -3,7 +3,6 @@ function isValidated() {
     var isValid = false;
     var textInput = document.getElementById('textInput').value;
     var dropdown = document.getElementById('dropdown').value;
-
     if (textInput.trim() === '') {
         document.getElementById('textInput').classList.add('border-red-500');
     } else {
@@ -13,7 +12,6 @@ function isValidated() {
         // Add a red color border around the dropdown if no option is chosen
         document.getElementById('dropdown').classList.add('border-red-500');
     } else {
-        // Remove red color border if a dropdown option is chosen
         document.getElementById('dropdown').classList.remove('border-red-500');
     }
     if (textInput.trim() !== '' && dropdown !== '') {
@@ -21,20 +19,38 @@ function isValidated() {
     }
     return isValid;
 }
-
 function add() {
     console.log("Running add function");
     if (isValidated()) {
-        // Store the values of the text input and dropdown
-        var textInputValue = document.getElementById('textInput').value;
-        var dropdownValue = document.getElementById('dropdown').value;
-
+        var textInputValue = document.querySelector('#textInput').value;
+        var dropdownValue = document.querySelector('#dropdown').value;
+        console.log(dropdownValue);
         // Create a new list item
         var newItem = document.createElement('li');
-        newItem.innerHTML = `
-        <span class="text-center ml-3 pt-4">➡️${dropdownValue}</span> <span
-        class="bg-pink-200 text-white rounded-full px-4 py-1 ml-4">${dropdownValue}<span>
+            newItem.innerHTML = `
+            <li class="m-3 pt-2">
+            <span class="text-center">➡️${textInputValue}</span>  <span
+                class="bg-green-300  rounded-full px-4 py-1 ml-4">${dropdownValue}<span>
+        </li> `;
+            if (dropdownValue == "fruit") {
+                newItem.innerHTML = `
+        <li class="m-3 pt-2">
+                    <span>➡️${textInputValue}</span><span class="bg-pink-200 text-white rounded-full px-4 py-1 ml-4">${dropdownValue}</span>
+                </li>`;
+            } else if( dropdownValue == 'dairy') {
+                newItem.innerHTML = `
+            <li class="m-3 pt-2">
+                        <span>➡️${textInputValue}</span><span class="bg-green-200 text-white rounded-full px-4 py-1 ml-4">${dropdownValue}</span>
+                    </li>`;
+            }
+            else {
+                newItem.innerHTML = `
+        <li class="m-3 pt-2">
+                    <span>➡️${textInputValue}</span><span class="bg-yellow-200 text-white rounded-full px-4 py-1 ml-4">${dropdownValue}</span>
+                </li>
         `;
+            
+        }
         // Add the new list item to the existing list
         var list = document.getElementById('listItems');
         list.appendChild(newItem);
@@ -45,7 +61,9 @@ function add() {
         console.log("Invalid inputs");
     }
 }
-document.getElementById('addItemForm').addEventListener('submit', function(event) {
+document.getElementById('addItemForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent form submission
     add(); // Call the add function
 });
+
+
